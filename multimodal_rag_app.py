@@ -1,3 +1,23 @@
+# app.py 또는 multimodal_rag_app.py 파일의 맨 위에 추가하세요.
+import streamlit as st
+
+st.set_page_config(layout="wide")
+st.title("🐞 Streamlit Secrets 디버깅")
+st.header("현재 앱이 인식하고 있는 Secrets 목록:")
+
+# st.secrets의 모든 내용을 화면에 그대로 출력합니다.
+# 이렇게 하면 어떤 이름으로 저장되었는지 정확히 알 수 있습니다.
+st.write(st.secrets.to_dict())
+
+st.header("분석:")
+if "firestore" in st.secrets:
+    st.success("✅ [firestore] 섹션을 성공적으로 찾았습니다! 이제 나머지 코드가 실행되어야 합니다.")
+else:
+    st.error("❌ [firestore] 섹션을 찾지 못했습니다. Streamlit Cloud 대시보드의 Secrets 설정을 다시 확인해주세요. 섹션 이름에 오타가 없는지, 대소문자가 올바른지(전부 소문자), 불필요한 공백이 없는지 확인이 필요합니다.")
+
+# --- (기존의 나머지 앱 코드는 이 아래에 그대로 둡니다) ---
+# 예: from google.oauth2 import service_account ... 등
+
 # multimodal_rag_app.py (프로젝트 지정 오류 해결된 최종 버전)
 import streamlit as st
 from google.oauth2 import service_account
