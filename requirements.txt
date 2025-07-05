@@ -5,3 +5,5 @@ faiss-cpu
 sentence-transformers
 langchain-google-genai
 google-cloud-firestore
+langchain-google-vertexai
+Pillow
